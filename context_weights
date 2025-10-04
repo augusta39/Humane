@@ -1,0 +1,32 @@
+[
+  {
+    "context": "emotional_support",
+    "weights": {
+      "empathy": 0.4,
+      "dignity": 0.25,
+      "honesty": 0.1,
+      "safety": 0.15,
+      "transparency": 0.1
+    }
+  },
+  {
+    "context": "practical_advice",
+    "weights": {
+      "empathy": 0.15,
+      "dignity": 0.2,
+      "honesty": 0.35,
+      "safety": 0.2,
+      "transparency": 0.1
+    }
+  },
+  {
+    "context": "crisis_response",
+    "weights": {
+      "empathy": 0.25,
+      "dignity": 0.15,
+      "honesty": 0.15,
+      "safety": 0.35,
+      "transparency": 0.1
+    }
+  }
+]
