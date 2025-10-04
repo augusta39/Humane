@@ -1,0 +1,22 @@
+import pandas as pd, json, matplotlib.pyplot as plt
+
+# Load data
+data = pd.read_csv("../data/humane_dataset.csv")
+weights = {d['context']: d['weights'] for d in json.load(open("../config/context_weights.json"))}
+
+# Compute HCI
+def compute_hci(row):
+    w = weights[row.context]
+    score = sum(row[k]*w[k] for k in w)
+    return score / sum(w.values())
+
+data['HCI'] = data.apply(compute_hci, axis=1)
+
+# Aggregate and visualize
+summary = data.groupby(['model','context'])['HCI'].mean().unstack()
+summary.plot(kind='bar')
+plt.title("Humane Composite Index by Model & Context")
+plt.ylabel("HCI (0–5)")
+plt.show()
+
+print(summary.round(2))
